@@ -53,6 +53,10 @@ export default function LeadForm() {
           phone: data.phone.replace(/\D/g, ""),
         }),
       });
+      const w = window as unknown as { fbq?: (...args: unknown[]) => void };
+      if (typeof w.fbq === "function") {
+        w.fbq("track", "Lead");
+      }
       setStatus("success");
     } catch {
       setStatus("error");
