@@ -1,5 +1,18 @@
+import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://comizy.com.br"),
+  manifest: "/site.webmanifest",
+  icons: {
+    apple: "/apple-touch-icon.png",
+    other: [
+      { rel: "icon", sizes: "32x32", url: "/favicon-32x32.png" },
+      { rel: "icon", sizes: "16x16", url: "/favicon-16x16.png" },
+    ],
+  },
+};
 
 export default function RootLayout({
   children,

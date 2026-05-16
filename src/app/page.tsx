@@ -4,15 +4,55 @@ import Logo from "./logo";
 import LeadForm from "./lead-form";
 
 export const metadata: Metadata = {
-  title: "Comizy — Dashboard de comissões para afiliados | Em breve",
+  title: "Comizy — Dashboard de comissões para afiliados",
   description:
     "Acompanhe todas as suas comissões de Hotmart, Kiwify, Monetizze e mais em um único dashboard. Cadastre-se para acesso antecipado.",
+  keywords: [
+    "dashboard afiliados",
+    "comissões afiliado",
+    "hotmart dashboard",
+    "kiwify dashboard",
+    "monetizze comissões",
+    "braip afiliados",
+    "gerenciar comissões",
+    "afiliados digitais",
+    "plataformas de afiliados",
+  ],
+  alternates: {
+    canonical: "https://comizy.com.br",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
-    title: "Comizy — Dashboard de comissões para afiliados | Em breve",
+    title: "Comizy — Dashboard de comissões para afiliados",
     description:
       "Acompanhe todas as suas comissões de Hotmart, Kiwify, Monetizze e mais em um único dashboard. Cadastre-se para acesso antecipado.",
     url: "https://comizy.com.br",
+    siteName: "Comizy",
+    locale: "pt_BR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Comizy — Dashboard de comissões para afiliados",
+    description:
+      "Acompanhe todas as suas comissões de Hotmart, Kiwify, Monetizze e mais em um único dashboard. Cadastre-se para acesso antecipado.",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Comizy",
+  url: "https://comizy.com.br",
+  description:
+    "Dashboard para afiliados acompanharem comissões de Hotmart, Kiwify, Monetizze, Braip e mais em um único lugar.",
+  potentialAction: {
+    "@type": "Action",
+    name: "Cadastre-se para acesso antecipado",
+    target: "https://comizy.com.br",
   },
 };
 
@@ -34,6 +74,12 @@ const socialProof = [
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-surface-subtle">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <header className="px-6 py-5">
         <Logo />
       </header>
