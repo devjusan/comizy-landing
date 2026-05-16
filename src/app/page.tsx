@@ -21,6 +21,8 @@ const platforms = [
   { name: "Kiwify", src: "/kiwify.png" },
   { name: "Monetizze", src: "/monetizze.png" },
   { name: "Braip", src: "/braip.png" },
+  { name: "Caktous", src: "/cakto.png" },
+  { name: "Eduzz", src: "/eduzz.png" },
 ];
 
 const socialProof = [
@@ -62,8 +64,8 @@ export default function Home() {
                 <Image
                   src={p.src}
                   alt={p.name}
-                  width={26}
-                  height={26}
+                  width={32}
+                  height={32}
                   className="object-contain"
                 />
               </div>
