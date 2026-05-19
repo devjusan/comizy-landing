@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Logo from "./logo";
 import LeadForm from "./lead-form";
+import DashboardPreview from "./dashboard-preview";
 
 export const metadata: Metadata = {
   title: "Comizy — Dashboard de comissões para afiliados",
@@ -134,20 +135,13 @@ export default function Home() {
             <LeadForm />
           </div>
 
-          <div className="mt-6 rounded-xl border border-border overflow-hidden shadow-sm">
-            <p className="text-xs text-center text-text-muted py-2 bg-surface-muted">
-              Veja como fica o seu dashboard
-            </p>
-            <Image
-              src="/dashboard.png"
-              alt="Preview do dashboard Comizy"
-              width={896}
-              height={560}
-              className="w-full object-cover"
-              priority
-            />
-          </div>
+        </div>
 
+        <div className="w-full max-w-2xl mt-6 rounded-xl border border-border overflow-hidden shadow-sm">
+          <DashboardPreview />
+        </div>
+
+        <div className="w-full max-w-md">
           <ul className="mt-5 space-y-2">
             {socialProof.map((item) => (
               <li
