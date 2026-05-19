@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
+import LandingHeader from "./components/core/landing-header";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://comizy.com.br"),
@@ -35,6 +36,7 @@ export default function RootLayout({
             />
           </noscript>
           <Analytics />
+          <LandingHeader />
           {children}
         </>
       </body>

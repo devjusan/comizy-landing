@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Logo from "./logo";
 import LeadForm from "./lead-form";
 import DashboardPreview from "./dashboard-preview";
 import FaqAccordion from "./faq-accordion";
@@ -112,14 +111,9 @@ export default function Home() {
         }}
       />
 
-      {/* Header */}
-      <header className="px-6 py-5 bg-surface-subtle border-b border-border">
-        <Logo />
-      </header>
-
       {/* Hero */}
-      <main className="relative flex flex-col items-center px-4 pb-16 pt-10 animate-fade-in-up bg-surface-subtle overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-80 h-80 bg-brand-300/20 rounded-full blur-3xl pointer-events-none" />
+      <main className="relative flex flex-col items-center px-4 pb-16 pt-32 animate-fade-in-up bg-surface-subtle overflow-hidden">
+        <div className="absolute top-16 left-1/4 w-80 h-80 bg-brand-300/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-brand-400/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="w-full max-w-md relative z-10">
