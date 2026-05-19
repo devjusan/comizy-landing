@@ -1,0 +1,9 @@
+{
+  "name": "Comizy",
+  "short_name": "Comizy",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#fafaf9",
+  "theme_color": "#f59e0b",
+  "icons": []
+}
