@@ -240,7 +240,7 @@ export default function Home() {
       </section>
 
       {/* Preço */}
-      <section className="w-full bg-surface-muted py-20 px-4">
+      <section className="w-full bg-surface-muted py-20 px-4" id="precos">
         <div className="max-w-sm mx-auto">
           <div className="rounded-2xl bg-surface border-2 border-brand-200 p-8 shadow-2xl shadow-brand-500/10 text-center">
             <p className="text-sm font-semibold text-brand-700 bg-brand-100 rounded-full px-4 py-1 inline-block mb-5">
@@ -279,7 +279,7 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section className="w-full bg-surface py-20 px-4">
+      <section className="w-full bg-surface py-20 px-4" id="faq">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-extrabold text-text-primary">
