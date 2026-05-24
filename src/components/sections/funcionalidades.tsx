@@ -18,11 +18,20 @@ const platforms = [
 function MiniChart() {
   const bars = [38, 56, 44, 72, 60, 90, 78];
   return (
-    <svg
+    <motion.svg
       viewBox="0 0 220 80"
       className="w-full h-16"
       role="img"
       aria-label="Mini gráfico de barras"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-40px" }}
+      variants={{
+        hidden: {},
+        visible: {
+          transition: { staggerChildren: 0.09, delayChildren: 0.15 },
+        },
+      }}
     >
       <defs>
         <linearGradient id="bar-gradient" x1="0" y1="0" x2="0" y2="1">
@@ -31,18 +40,21 @@ function MiniChart() {
         </linearGradient>
       </defs>
       {bars.map((h, i) => (
-        <rect
+        <motion.rect
           key={i}
           x={i * 32 + 4}
-          y={80 - h}
           width="22"
-          height={h}
           rx="3"
           fill="url(#bar-gradient)"
           opacity={0.55 + (i / bars.length) * 0.45}
+          variants={{
+            hidden: { height: 0, y: 80 },
+            visible: { height: h, y: 80 - h },
+          }}
+          transition={{ duration: 0.7, ease: easeOut }}
         />
       ))}
-    </svg>
+    </motion.svg>
   );
 }
 
@@ -195,8 +207,8 @@ export default function Funcionalidades() {
               Dashboard unificado
             </h3>
             <p className="text-text-secondary text-sm leading-relaxed mb-5">
-              Hoje, mês, aprovadas, reembolsos — todas as métricas no mesmo
-              lugar, atualizadas em tempo real.
+              Hoje, mês, aprovadas, recusadas, reembolsos — todas as métricas no
+              mesmo lugar, atualizadas em tempo real.
             </p>
 
             <div className="grid grid-cols-3 gap-3 mb-4">
@@ -239,11 +251,27 @@ export default function Funcionalidades() {
             <p className="text-text-secondary text-sm leading-relaxed mb-5">
               Recorte os dados como quiser. Por plataforma, dia, semana, mês.
             </p>
-            <div className="grid grid-cols-3 gap-2">
+            <motion.div
+              className="grid grid-cols-3 gap-2"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-40px" }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.08, delayChildren: 0.15 },
+                },
+              }}
+            >
               {platforms.map((p) => (
-                <div
+                <motion.div
                   key={p.name}
                   className="aspect-square rounded-lg bg-surface-amber border border-brand-100 flex items-center justify-center"
+                  variants={{
+                    hidden: { opacity: 0, scale: 0.8, y: 12 },
+                    visible: { opacity: 1, scale: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.45, ease: easeOut }}
                 >
                   <Image
                     src={p.src}
@@ -252,9 +280,9 @@ export default function Funcionalidades() {
                     height={72}
                     className="object-contain"
                   />
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </FeatureCard>
 
           {/* Medium card — Exportar CSV */}
