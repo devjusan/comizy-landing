@@ -48,7 +48,7 @@ const legalLinks = [
 const socials = [
   {
     href: "https://instagram.com/comizy.com.br",
-    label: "Instagram @comizy",
+    label: "Instagram @comizy.com.br",
     icon: <InstagramIcon />,
   },
 ];
