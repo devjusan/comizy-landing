@@ -1,6 +1,7 @@
 import Hero from "@/components/sections/hero";
 import Dor from "@/components/sections/dor";
 import ComoFunciona from "@/components/sections/como-funciona";
+import PorDentro from "@/components/sections/por-dentro";
 import Funcionalidades from "@/components/sections/funcionalidades";
 import ProvaSocial from "@/components/sections/prova-social";
 import Precos from "@/components/sections/precos";
@@ -46,6 +47,7 @@ export default function Home() {
         <Hero />
         <Dor />
         <ComoFunciona />
+        <PorDentro />
         <Funcionalidades />
         <ProvaSocial />
         <Precos />

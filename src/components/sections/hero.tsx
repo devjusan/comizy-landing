@@ -1,8 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 
 const SIGNUP_URL = "https://app.comizy.com.br/signup";
 const LOGIN_URL = "https://app.comizy.com.br/login";
@@ -15,6 +21,32 @@ const platforms = [
   { name: "Cakto", src: "/cakto.png" },
   { name: "Eduzz", src: "/eduzz.png" },
 ];
+
+const sales = [
+  { platform: "Hotmart", amount: "297,00", src: "/hotmart.png" },
+  { platform: "Kiwify", amount: "197,00", src: "/kiwify.png" },
+  { platform: "Cakto", amount: "497,00", src: "/cakto.png" },
+  { platform: "Eduzz", amount: "147,00", src: "/eduzz.png" },
+  { platform: "Monetizze", amount: "89,90", src: "/monetizze.png" },
+];
+
+function LockSmall() {
+  return (
+    <svg
+      className="w-3 h-3"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="4" y="11" width="16" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    </svg>
+  );
+}
 
 function ArrowRight() {
   return (
@@ -60,6 +92,15 @@ export default function Hero() {
   const ry = useMotionValue(0);
   const srx = useSpring(rx, { stiffness: 150, damping: 18 });
   const sry = useSpring(ry, { stiffness: 150, damping: 18 });
+
+  const [saleIdx, setSaleIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setSaleIdx((i) => (i + 1) % sales.length);
+    }, 4500);
+    return () => clearInterval(id);
+  }, []);
 
   const rotateX = useTransform(srx, (v) => `${v}deg`);
   const rotateY = useTransform(sry, (v) => `${v}deg`);
@@ -218,6 +259,33 @@ export default function Hero() {
               transition: "box-shadow 0.3s ease",
             }}
           >
+            {/* Browser chrome */}
+            <div className="flex items-center h-9 px-3.5 bg-[#F4F2EE] border-b border-border">
+              <div className="flex items-center gap-1.5 shrink-0">
+                <span
+                  className="w-3 h-3 rounded-full bg-[#FF5F57]"
+                  aria-hidden
+                />
+                <span
+                  className="w-3 h-3 rounded-full bg-[#FEBC2E]"
+                  aria-hidden
+                />
+                <span
+                  className="w-3 h-3 rounded-full bg-[#28C840]"
+                  aria-hidden
+                />
+              </div>
+              <div className="flex-1 flex justify-center px-3 min-w-0">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white border border-border text-[11px] text-text-muted max-w-xs">
+                  <LockSmall />
+                  <span className="truncate">
+                    app.comizy.com.br/dashboard
+                  </span>
+                </div>
+              </div>
+              <div className="w-12 shrink-0" aria-hidden />
+            </div>
+
             <Image
               src="/dashboard.png"
               alt="Dashboard Comizy — comissões unificadas de todas as plataformas"
@@ -235,6 +303,43 @@ export default function Hero() {
               aria-hidden
             />
           </motion.div>
+
+          {/* Floating "Nova venda" notification */}
+          <div className="absolute right-2 sm:-right-6 top-16 sm:top-24 z-10 pointer-events-none">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={saleIdx}
+                initial={{ opacity: 0, x: 28, y: -8, scale: 0.92 }}
+                animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
+                exit={{ opacity: 0, x: 28, scale: 0.92 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="flex items-center gap-3 bg-white/95 backdrop-blur rounded-xl border border-border shadow-xl shadow-brand-500/15 px-3.5 py-2.5 min-w-52.5"
+              >
+                <div className="w-10 h-10 rounded-lg bg-surface-amber border border-brand-100 flex items-center justify-center shrink-0">
+                  <Image
+                    src={sales[saleIdx].src}
+                    alt={sales[saleIdx].platform}
+                    width={28}
+                    height={28}
+                    className="object-contain"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[10px] uppercase tracking-wide font-bold text-success flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
+                    Nova venda
+                  </p>
+                  <p className="text-[11px] text-text-secondary font-medium truncate">
+                    {sales[saleIdx].platform}
+                  </p>
+                  <p className="text-sm font-extrabold text-text-primary tabular-nums">
+                    + R$ {sales[saleIdx].amount}
+                  </p>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
           <div
             className="absolute -bottom-8 left-[10%] right-[10%] h-12 rounded-full bg-brand-500/20 blur-3xl -z-10"
             aria-hidden
