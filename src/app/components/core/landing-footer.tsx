@@ -131,7 +131,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-          <span>© 2065 Comizy. Todos os direitos reservados.</span>
+          <span>© 2026 Comizy. Todos os direitos reservados.</span>
           <span>Feito com ♥ no Brasil.</span>
         </div>
       </div>
