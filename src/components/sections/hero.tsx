@@ -278,16 +278,14 @@ export default function Hero() {
               <div className="flex-1 flex justify-center px-3 min-w-0">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-white border border-border text-[11px] text-text-muted max-w-xs">
                   <LockSmall />
-                  <span className="truncate">
-                    app.comizy.com.br/dashboard
-                  </span>
+                  <span className="truncate">app.comizy.com.br/dashboard</span>
                 </div>
               </div>
               <div className="w-12 shrink-0" aria-hidden />
             </div>
 
             <Image
-              src="/dashboard.png"
+              src="/dashboard-2.png"
               alt="Dashboard Comizy — comissões unificadas de todas as plataformas"
               width={2400}
               height={1500}
