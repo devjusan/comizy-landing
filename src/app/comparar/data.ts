@@ -11,19 +11,11 @@
 
 export type PlatformId = "hotmart" | "kiwify" | "monetizze" | "braip";
 
-export type ProductTypeId =
-  | "curso"
-  | "software"
-  | "fisico"
-  | "indeciso";
+export type ProductTypeId = "curso" | "software" | "fisico" | "indeciso";
 
 export type VolumeId = "0-10" | "10-50" | "50-200" | "200+";
 
-export type ImportanceId =
-  | "comissao"
-  | "saque"
-  | "catalogo"
-  | "suporte";
+export type ImportanceId = "comissao" | "saque" | "catalogo" | "suporte";
 
 export interface Platform {
   id: PlatformId;
@@ -59,13 +51,12 @@ export const PLATFORMS: Record<PlatformId, Platform> = {
     id: "hotmart",
     name: "Hotmart",
     logo: "/hotmart.png",
-    commission: "0% a 80%",
+    commission: "30% a 80%",
     payout: "D+30 (Brasil)",
     catalog: "500 mil+ produtos",
     focus: "Infoproduto global",
     edge: "Maior catálogo e Hotleads",
-    idealFor:
-      "Afiliado que quer variedade e mercado internacional",
+    idealFor: "Afiliado que quer variedade e mercado internacional",
   },
   kiwify: {
     id: "kiwify",
@@ -243,15 +234,15 @@ export const LONG_CONTENT: {
       paragraphs: [
         "A resposta é simples: quando você cruza a faixa de cinquenta vendas por mês. Abaixo disso, focar em uma plataforma reduz fricção operacional e acelera aprendizado. Acima disso, depender de uma única plataforma vira risco. Plataforma que mudou regra de anúncio, produto que saiu do ar, instabilidade no checkout, qualquer evento desses derruba a receita do mês inteiro. Diversificar entre duas ou três plataformas espalha esse risco e abre portas para produtos que só existem em uma.",
         "O problema é que diversificar tem um custo escondido: visibilidade. Cada plataforma tem painel próprio, com regras próprias de exibição, prazos próprios e definições próprias de venda confirmada. Acompanhar tudo manualmente em três abas diferentes consome uma hora por dia e ainda assim deixa coisa passar. Reembolso entrou e você não viu, chargeback caiu e o painel não destacou, saque foi liberado e você esqueceu de solicitar. Esses pequenos atritos somam.",
-        "É exatamente aí que ferramentas de unificação entram. O <a href=\"/\" class=\"text-brand-700 underline underline-offset-2 hover:text-brand-600\">Comizy</a> faz isso: você conecta cada plataforma por webhook em dois minutos e passa a ver toda a sua receita, todas as vendas e todos os reembolsos num único painel. Não é planilha automatizada. É infraestrutura que recebe o evento da plataforma no instante em que ele acontece e mostra na tela em tempo real.",
+        'É exatamente aí que ferramentas de unificação entram. O <a href="/" class="text-brand-700 underline underline-offset-2 hover:text-brand-600">Comizy</a> faz isso: você conecta cada plataforma por webhook em dois minutos e passa a ver toda a sua receita, todas as vendas e todos os reembolsos num único painel. Não é planilha automatizada. É infraestrutura que recebe o evento da plataforma no instante em que ele acontece e mostra na tela em tempo real.',
       ],
     },
     {
       h3: "Como começar do jeito certo",
       paragraphs: [
         "Se você está começando hoje, comece em uma plataforma só. Faça o caminho completo: cadastro, solicitação de afiliação, geração de link, criação de campanha, primeira venda, primeiro saque. Esse ciclo inteiro ensina mais sobre como o jogo funciona do que qualquer treinamento. A escolha da plataforma para começar é geralmente Kiwify, pelo saque rápido e curva curta, ou Hotmart, se você já tem público formado e quer variedade de produto desde o primeiro dia.",
-        "Quando bater a primeira faixa de cinquenta vendas mensais consistentes, comece a olhar a segunda plataforma. Não migre, adicione. O perfil ideal de afiliado em 2026 não é o que defende uma plataforma. É o que opera duas ou três com fluidez e mantém um painel unificado por cima delas. Se você quer ver como esse painel funciona na prática, dá pra <a href=\"/#precos\" class=\"text-brand-700 underline underline-offset-2 hover:text-brand-600\">conhecer o Comizy</a> e configurar a primeira integração ainda hoje.",
-        "Independente da plataforma que você escolher, três coisas fazem mais diferença do que a escolha em si: ter um sistema claro de mensuração de campanha, manter uma reserva de seis semanas de despesa de tráfego para sobreviver a saque longo, e nunca depender de uma plataforma só. Plataforma é canal de distribuição. Seu negócio é o público e a oferta. Comizy existe pra que a parte chata de juntar os canais não seja sua, e você possa <a href=\"/\" class=\"text-brand-700 underline underline-offset-2 hover:text-brand-600\">focar onde realmente importa</a>.",
+        'Quando bater a primeira faixa de cinquenta vendas mensais consistentes, comece a olhar a segunda plataforma. Não migre, adicione. O perfil ideal de afiliado em 2026 não é o que defende uma plataforma. É o que opera duas ou três com fluidez e mantém um painel unificado por cima delas. Se você quer ver como esse painel funciona na prática, dá pra <a href="/#precos" class="text-brand-700 underline underline-offset-2 hover:text-brand-600">conhecer o Comizy</a> e configurar a primeira integração ainda hoje.',
+        'Independente da plataforma que você escolher, três coisas fazem mais diferença do que a escolha em si: ter um sistema claro de mensuração de campanha, manter uma reserva de seis semanas de despesa de tráfego para sobreviver a saque longo, e nunca depender de uma plataforma só. Plataforma é canal de distribuição. Seu negócio é o público e a oferta. Comizy existe pra que a parte chata de juntar os canais não seja sua, e você possa <a href="/" class="text-brand-700 underline underline-offset-2 hover:text-brand-600">focar onde realmente importa</a>.',
       ],
     },
   ],
@@ -292,25 +283,18 @@ export function computeQuizResult(answers: QuizAnswers): QuizResult {
     primary,
     alternatives,
     justification: buildJustification(primary, answers),
-    showComizyCallout:
-      answers.volume === "50-200" || answers.volume === "200+",
+    showComizyCallout: answers.volume === "50-200" || answers.volume === "200+",
   };
 }
 
-function buildJustification(
-  primary: PlatformId,
-  answers: QuizAnswers,
-): string {
+function buildJustification(primary: PlatformId, answers: QuizAnswers): string {
   const platform = PLATFORMS[primary];
 
   const productPhrase = {
-    curso:
-      "Como você quer promover curso ou infoproduto, ",
+    curso: "Como você quer promover curso ou infoproduto, ",
     software: "Como o foco é software ou SaaS, ",
-    fisico:
-      "Como você vai trabalhar com produto físico, ",
-    indeciso:
-      "Como você ainda está decidindo o tipo de produto, ",
+    fisico: "Como você vai trabalhar com produto físico, ",
+    indeciso: "Como você ainda está decidindo o tipo de produto, ",
   }[answers.product];
 
   const importancePhrase = {
@@ -329,10 +313,8 @@ function buildJustification(
       "Pra quem ainda está validando os primeiros números, é a opção com menor curva de aprendizado.",
     "10-50":
       "Nessa faixa de vendas, a escolha tende a estabilizar e te dá margem pra escalar.",
-    "50-200":
-      "Nesse volume, dá pra extrair valor real dos diferenciais dela.",
-    "200+":
-      "Operando nesse volume, ela aguenta o ritmo sem virar gargalo.",
+    "50-200": "Nesse volume, dá pra extrair valor real dos diferenciais dela.",
+    "200+": "Operando nesse volume, ela aguenta o ritmo sem virar gargalo.",
   }[answers.volume];
 
   return `${productPhrase}a ${platform.name} faz sentido porque ${importancePhrase} ${volumePhrase}`;
